@@ -6,16 +6,17 @@
 		<form action="" method="POST" class="form-inline pull-right" role="form">
 			<div class="form-group">
 				<select name="filterBy" class="form-control">
-					<option value="false">Filter</option>
-					<option value="yes" <?php if($this->input->get('filterBy')=='yes') echo 'selected' ?> >Yes</option>
-					<option value="no" <?php if($this->input->get('filterBy')=='no') echo 'selected' ?> >No</option>
+					<option value="false">Order By</option>
+					<option value="ID" <?php if($this->input->get('filterBy')=='ID') echo 'selected' ?> >ID</option>
+					<option value="username" <?php if($this->input->get('filterBy')=='username') echo 'selected' ?> >Username</option>
+					<option value="email" <?php if($this->input->get('filterBy')=='no') echo 'selected' ?> >Email</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<select name="orderBy" class="form-control">
-					<option value="false">order</option>
-					<option value="yes" <?php if($this->input->get('orderBy')=='yes') echo 'selected' ?>>Yes</option>
-					<option value="no" <?php if($this->input->get('orderBy')=='no') echo 'selected' ?>>No</option>
+					<option value="false">Sort</option>
+					<option value="ASC" <?php if($this->input->get('orderBy')=='ASC') echo 'selected' ?>>ASC</option>
+					<option value="DESC" <?php if($this->input->get('orderBy')=='DESC') echo 'selected' ?>>DESC</option>
 				</select>
 			</div>
 			<button type="submit" name="formfilter" value="formfilter" class="btn btn-default">Filter</button>
