@@ -23,20 +23,24 @@
 
 		// Custom MYSQL Query
 		$query = "SELECT * from users WHERE users.id != 0 ";
-		$query .= ($this->input->get('filterBy')=='yes') ? "and users.id > 10 " : '';
-		$query .= ($this->input->get('filterBy')=='no') ? "and users.id > 20 " : '';
+		// $query .= ($this->input->get('filterBy')=='yes') ? "and users.id > 10 " : '';
+		// $query .= ($this->input->get('filterBy')=='no') ? "and users.id > 20 " : '';
 
-		$query .= ($this->input->get('orderBy')=='yes') ? "and  users.username like 'a%' " : '';
-		$query .= ($this->input->get('orderBy')=='no') ? "and  users.username like 'b%' " : '';
+		//$query .= ($this->input->get('orderBy')=='yes') ? "and  users.username like 'a%' " : '';
+		// $query .= ($this->input->get('orderBy')=='no') ? "and  users.username like 'b%' " : '';
+
+		if($this->input->get('filterBy')!=='false')
+		{
+			$field = $this->input->get('filterBy');
+			$query .= ($this->input->get('orderBy')=='ASC') ? "ORDER BY users.".$field." ASC " : '';
+			$query .= ($this->input->get('orderBy')=='DESC') ? "ORDER BY users.".$field." DESC " : '';
+		}
 
 
 
 		// Current Page
 		$current_page = 0;
-		if(isset($_GET['page']))
-		{
-			$current_page = ($_GET['page']=='')? 0 : $_GET['page'];
-		}
+		if(isset($_GET['page'])) $current_page = ($_GET['page']=='') ? 0 : $_GET['page'];
 
 		$this->load->library('pagination');
 		$config = array(
